@@ -18,6 +18,7 @@ export default class App extends React.Component {
       hello: undefined,
     };
   }
+
   render() {
     return (
       <RootView>
