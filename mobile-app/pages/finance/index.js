@@ -31,6 +31,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     }),
     tabBarOptions: {
       showIcon: true,
+      showLabel: false,
       indicatorStyle: {
         backgroundColor: 'magenta',
       },
@@ -39,6 +40,7 @@ const TabNavigator = createMaterialTopTabNavigator(
       },
       tabStyle: {
         width: 100,
+        height: 64,
       },
       style: {
         backgroundColor: '#000',
