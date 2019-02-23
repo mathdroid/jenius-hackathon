@@ -3,6 +3,10 @@ import { AppRegistry, View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 export default class TimedInput extends React.Component {
+  static defaultProps = {
+    duration: 10000,
+  };
+
   constructor(props) {
     super(props);
 
@@ -17,7 +21,9 @@ export default class TimedInput extends React.Component {
 
     return (
       <>
-        <QuestionText>{question}</QuestionText>
+        <QuestionText>
+          {question} {duration}
+        </QuestionText>
         {answers.map((data, key) => {
           return (
             <View key={data}>
