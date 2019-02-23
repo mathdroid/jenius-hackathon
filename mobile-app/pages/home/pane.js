@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, ScrollView, Image, View, StyleSheet } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import styled from 'styled-components/native';
+import Button from '../../components/Button';
 
 const PaneWrapper = styled(View)`
+  display: flex;
   flex: 1;
   align-self: stretch;
   background-color: white;
@@ -19,14 +21,32 @@ const PaneTitle = styled(View)`
 `;
 
 const PaneMenuItem = styled(View)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border-bottom-width: 1px;
   border-color: rgba(200, 200, 200, 1);
   padding: 16px;
 `;
 
+const MenuView = styled(View)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const CardText = styled(Text)`
+  margin-bottom: ${props => (props.subheading ? '8px' : 0)};
   font-size: 16px;
-  ${props => props.bold && 'font-weight: bold;'}
+
+  color: ${props => (props.bold ? 'rgb(125, 125, 125)' : 'rgb(165, 165, 165)')};
+  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
+`;
+
+const MenuIcon = styled(Image)`
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+  resize-mode: contain;
 `;
 
 const Pane = ({ title, menu = [] }) => (
@@ -34,12 +54,13 @@ const Pane = ({ title, menu = [] }) => (
     <PaneTitle>
       <CardText bold>{title}</CardText>
     </PaneTitle>
-    {menu.map(({ icon, label, cta }) => (
+    {menu.map(({ icon, label, cta, onCta }) => (
       <PaneMenuItem key={label}>
-        <Image source={icon} />
-        <CardText>
-          {label} {cta} {JSON.stringify(icon)}
-        </CardText>
+        <MenuIcon source={icon} />
+        <MenuView>
+          <CardText subheading>{label}</CardText>
+          <Button title={cta} onPress={onCta} />
+        </MenuView>
       </PaneMenuItem>
     ))}
   </PaneWrapper>

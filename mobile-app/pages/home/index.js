@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text, ScrollView, Image, View, StyleSheet } from 'react-native';
-import styled from 'styled-components/native';
+import { Text, ScrollView, Image, View } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-import TextInput from './text-input';
 import cards from './cards.png';
 import safe from './safe.png';
 import money from './money.png';
@@ -12,15 +11,14 @@ import cardCenter from './card-center.png';
 import eWallet from './e-wallet.png';
 import totalBalance from './total-balance.png';
 
-// const RootView = styled(ScrollView)`
-// `;
+const RootView = styled(ScrollView)`
+  background-color: #f5f5f5;
+`;
 
-const containerStyle = StyleSheet.create({
-  default: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-});
+const containerStyle = css`
+  align-items: flex-start;
+  justify-content: center;
+`;
 
 const Banner = styled(View)`
   align-self: stretch;
@@ -37,6 +35,22 @@ const BannerText = styled(Text)`
 const Bold = styled(Text)`
   font-weight: bold;
 `;
+
+const ImageWrapper = styled(View)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: stretch;
+  width: 100%;
+  aspect-ratio: ${props => props.aspectRatio || 1};
+`;
+
+const StyledImage = styled(Image)`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  resize-mode: contain;
+`;
+
 const HiBanner = ({ name }) => (
   <Banner>
     <BannerText>
@@ -45,108 +59,51 @@ const HiBanner = ({ name }) => (
   </Banner>
 );
 
-export default class Home extends React.Component {
-  render() {
-    const { navigation } = this.props;
-    const navigateTo = to => () => navigation.navigate(to);
-    return (
-      <ScrollView
-        style={{
-          backgroundColor: '#f5f5f5',
-        }}
-        contentContainerStyle={containerStyle.default}
-      >
-        <HiBanner name={'Resi'} />
-        <View
-          style={{
-            aspectRatio: 1.8,
-            width: '100%',
-            alignSelf: 'stretch',
-            marginVertical: 5,
-          }}
-        >
-          <Image
-            source={totalBalance}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
-        <View
-          style={{
-            aspectRatio: 1.38,
-            width: '100%',
-            alignSelf: 'stretch',
-            marginVertical: 5,
-          }}
-        >
-          <Image
-            source={inOut}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
+const Home = ({ navigation }) => {
+  const navigateTo = to => () => navigation.navigate(to);
 
-        <View
-          style={{
-            aspectRatio: 1.36,
-            width: '100%',
-            alignSelf: 'stretch',
-            marginVertical: 5,
-          }}
-        >
-          <Image
-            source={eWallet}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
+  return (
+    <RootView contentContainerStyle={containerStyle}>
+      <HiBanner name="Resi" />
 
-        <View
-          style={{
-            aspectRatio: 1.33,
-            width: '100%',
-            alignSelf: 'stretch',
-            marginVertical: 5,
-          }}
-        >
-          <Image
-            source={cardCenter}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
+      <ImageWrapper aspectRatio={1.8}>
+        <StyledImage source={totalBalance} />
+      </ImageWrapper>
+      <ImageWrapper aspectRatio={1.38}>
+        <StyledImage source={inOut} />
+      </ImageWrapper>
+      <ImageWrapper aspectRatio={1.36}>
+        <StyledImage source={eWallet} />
+      </ImageWrapper>
+      <ImageWrapper aspectRatio={1.33}>
+        <StyledImage source={cardCenter} />
+      </ImageWrapper>
 
-        <TextInput pressHandler={navigateTo('Bandersnatch')} />
-        <Pane
-          title={'KYCK'}
-          menu={[
-            { icon: cards, label: 'Spending Tracker', cta: 'Ulas Pengeluaranmu' },
-            { icon: safe, label: 'Budget Planner', cta: 'Rencanakan Keuanganmu' },
-            {
-              icon: money,
-              label: 'Flexi Cash',
-              cta: 'Mulai Flexi Quiz',
-              onCta: navigateTo('Bandersnatch'),
-            },
-          ]}
-        />
-      </ScrollView>
-    );
-  }
-}
+      <Pane
+        title="KYCK"
+        menu={[
+          {
+            icon: cards,
+            label: 'Spending Tracker',
+            cta: 'Ulas Pengeluaranmu',
+            onCta: navigateTo('Bandersnatch'),
+          },
+          {
+            icon: safe,
+            label: 'Budget Planner',
+            cta: 'Rencanakan Keuanganmu',
+            onCta: navigateTo('Bandersnatch'),
+          },
+          {
+            icon: money,
+            label: 'Flexi Cash',
+            cta: 'Mulai Flexi Quiz',
+            onCta: navigateTo('Bandersnatch'),
+          },
+        ]}
+      />
+    </RootView>
+  );
+};
+
+export default Home;
