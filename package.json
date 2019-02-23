@@ -7,9 +7,6 @@
   "author": "Resi Respati <resir014@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "mobile-app"
-  ],
   "dependencies": {},
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.4.0",
