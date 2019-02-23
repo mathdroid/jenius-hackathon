@@ -1,6 +1,3 @@
-const typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/lib/configs/recommended.json');
-const typescriptEslintPrettier = require('eslint-config-prettier/@typescript-eslint');
-
 module.exports = {
   root: true,
   env: {
@@ -10,7 +7,8 @@ module.exports = {
     jest: true,
   },
   extends: ['airbnb', 'prettier', 'plugin:prettier/recommended'],
-  plugins: ['@typescript-eslint', 'prettier'],
+  parser: 'babel-eslint',
+  plugins: ['prettier'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -33,17 +31,4 @@ module.exports = {
       },
     },
   },
-  overrides: [
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-      rules: Object.assign(typescriptEslintRecommended.rules, typescriptEslintPrettier.rules, {
-        '@typescript-eslint/explicit-function-return-type': ['off'],
-        'no-undef': 'off',
-      }),
-    },
-  ],
 };

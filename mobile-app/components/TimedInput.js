@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export default class TimedInput extends React.Component {
   static defaultProps = {
-    duration: 3,
+    isEnabled: false,
   };
 
   constructor(props) {
@@ -12,65 +12,39 @@ export default class TimedInput extends React.Component {
 
     this.state = {
       selected: undefined,
-      duration: this.props.duration,
-      isEnabled: false,
     };
   }
 
-  tick() {
-    const { answers } = this.props;
-
-    this.setState(state => ({
-      duration: state.duration - 1,
-    }));
-
-    if (this.state.duration === 0) {
-      this.handlePress(answers[Math.floor(Math.random() * answers.length)]);
+  handlePress(data) {
+    const { isEnabled, pressHandler } = this.props;
+    if (isEnabled) {
+      this.setState({ selected: data });
+      pressHandler(data);
     }
   }
 
-  handlePress(key) {
-    this.setState({ selected: key, isEnabled: false });
-    clearInterval(this.interval);
-    this.props.pressHandler(key);
-  }
-
-  componentDidMount() {
-    this.setState({ isEnabled: true });
-    this.interval = setInterval(() => this.tick(), 1000);
-  }
-
-  componentWillUnmount() {
-    this.setState({ isEnabled: false });
-    clearInterval(this.interval);
-  }
-
   render() {
-    const { question, answers, pressHandler } = this.props;
-    const { selected, duration } = this.state;
+    const { question, answers } = this.props;
+    const { selected } = this.state;
 
     return (
       <>
-        <QuestionText>
-          {question} {duration}
-        </QuestionText>
-        {answers.map(data => {
-          return (
-            <View key={data}>
-              {selected === data ? (
-                <CheckboxWrapper>
-                  <Checkbox checked />
-                  <Text>{data}</Text>
-                </CheckboxWrapper>
-              ) : (
-                <CheckboxWrapper onPress={() => this.handlePress(data)}>
-                  <Checkbox />
-                  <Text>{data}</Text>
-                </CheckboxWrapper>
-              )}
-            </View>
-          );
-        })}
+        {question && <QuestionText>{question}</QuestionText>}
+        {answers.map(data => (
+          <View key={data.label}>
+            {selected === data ? (
+              <CheckboxWrapper>
+                <Checkbox checked />
+                <Text>{data.label}</Text>
+              </CheckboxWrapper>
+            ) : (
+              <CheckboxWrapper onPress={() => this.handlePress(data)}>
+                <Checkbox />
+                <Text>{data.label}</Text>
+              </CheckboxWrapper>
+            )}
+          </View>
+        ))}
       </>
     );
   }
