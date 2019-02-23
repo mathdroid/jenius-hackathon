@@ -1,0 +1,54 @@
+{
+  "1":
+  {
+  "Q": "What does delayed gratification mean?",
+  "A": "When someone gets on your nerves and makes you mad.",
+  "B": "Taking the time to receive the best reward",
+  "C": "Missing out on a reward because you waited to long to act.",
+  "D": "Waiting around to talk to a teacher because you got upset",
+  "E": "Being on your best behavior all the time",
+  "correct": "B",
+  },
+  "2":
+  {
+  "Q": "Which student is using delayed gratification?",
+  "A": "Sam plays all day because it is more fun than studying.",
+  "B": "Susan shouts all the answers out in class because she wants to be first.",
+  "C": "Shaun eats his popcorn snack first because it is his favorite.",
+  "D": "Senica gets to use the whole recess time because she finished her homework first",
+  "E": "Steven races to the front of the line to be the first.",
+  "correct": "D",
+  },
+  "3":
+  {
+  "Q": "Some jobs that pay well can only be earned by people who go to college.  Why?",
+  "A": "Because people are being trained for a special task.",
+  "B": "Because people have to learn how to cheat to get rich.",
+  "C": "Because certain jobs want you to be older before you work for them.",
+  "D": "Because people in college should be given a lot of money.",
+  "E": "None of the above",
+  "correct": "A",
+  },
+  "4":
+  {
+  "Q": "How could you use patience?",
+  "A": "To calmly wait for your turn",
+  "B": "To share something with a friend",
+  "C": "To take something without asking for it",
+  "D": "To tell someone that you want something",
+  "E": "To give something to someone",
+  "correct": "A",
+  },
+  "5":
+  {
+  "Q": "Assume all people are born into families with sufficient wealth. Who earns the most money?",
+  "A": "People who steal and cheat",
+  "B": "People who drop out of High School",
+  "C": "People who finish college",
+  "D": "People who knows how to plan",
+  "E": "They earn the same",
+  "correct": "D",
+  },
+
+  
+}
