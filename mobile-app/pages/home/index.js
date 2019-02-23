@@ -86,13 +86,13 @@ const Home = ({ navigation }) => {
             icon: cards,
             label: 'Spending Tracker',
             cta: 'Ulas Pengeluaranmu',
-            onCta: navigateTo('Bandersnatch'),
+            onCta: navigateTo('Finance'),
           },
           {
             icon: safe,
             label: 'Budget Planner',
             cta: 'Rencanakan Keuanganmu',
-            onCta: navigateTo('Bandersnatch'),
+            onCta: navigateTo('Finance'),
           },
           {
             icon: money,
