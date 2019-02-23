@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Easing, View, AsyncStorage } from 'react-native';
+import { Animated, Easing, View, AsyncStorage, Image } from 'react-native';
 
 import { RootView, Button, InterText, TextContainer, CountdownBar } from './components';
 import Animation from './components/animation';
@@ -9,6 +9,17 @@ import lottieRocket from './lottie-rocket.json';
 import lottieFinished from './lottie-finished.json';
 import lottieSuccess from './lottie-success.json';
 import questions from './questions.json';
+
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={require('../../assets/splash.png')}
+        style={{ height: 64, resizeMode: 'contain' }}
+      />
+    );
+  }
+}
 
 class Lottie extends Component {
   state = {
@@ -134,6 +145,7 @@ class BandersnatchPage extends Component {
       borderBottomWidth: 0,
     },
     headerTintColor: '#fff',
+    headerTitle: <LogoTitle />,
   };
 
   state = {

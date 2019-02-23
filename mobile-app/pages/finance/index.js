@@ -1,9 +1,21 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import FinanceBudgetScreen from './budget';
 import FinanceReportsScreen from './reports';
+
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={require('../../assets/splash.png')}
+        style={{ height: 64, resizeMode: 'contain' }}
+      />
+    );
+  }
+}
 
 const TabNavigator = createMaterialTopTabNavigator(
   {
@@ -58,5 +70,6 @@ TabNavigator.navigationOptions = {
     borderBottomWidth: 0,
   },
   headerTintColor: '#ddd',
+  headerTitle: <LogoTitle />,
 };
 export default TabNavigator;

@@ -11,6 +11,17 @@ import cardCenter from './card-center.png';
 import eWallet from './e-wallet.png';
 import totalBalance from './total-balance.png';
 
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={require('../../assets/splash.png')}
+        style={{ height: 64, resizeMode: 'contain', backgroundColor: 'white' }}
+      />
+    );
+  }
+}
+
 const RootView = styled(ScrollView)`
   background-color: #f5f5f5;
 `;
@@ -113,10 +124,11 @@ const Home = ({ navigation }) => {
 };
 Home.navigationOptions = {
   headerStyle: {
-    backgroundColor: 'rgb(0, 164, 222)',
+    backgroundColor: 'white',
     shadowColor: 'transparent',
     borderBottomWidth: 0,
   },
-  headerTintColor: '#ddd',
+  headerTintColor: '#000',
+  headerTitle: <LogoTitle />,
 };
 export default Home;
