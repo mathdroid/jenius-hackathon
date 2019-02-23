@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 
 export default class TimedInput extends React.Component {
   static defaultProps = {
-    duration: 10,
     isEnabled: false,
   };
 
@@ -13,20 +12,7 @@ export default class TimedInput extends React.Component {
 
     this.state = {
       selected: undefined,
-      duration: this.props.duration,
     };
-  }
-
-  tick() {
-    const { answers } = this.props;
-
-    this.setState(state => ({
-      duration: state.duration - 1,
-    }));
-
-    if (this.state.duration === 0) {
-      this.handlePress(answers[Math.floor(Math.random() * answers.length)]);
-    }
   }
 
   handlePress(data) {
@@ -37,8 +23,8 @@ export default class TimedInput extends React.Component {
   }
 
   render() {
-    const { question, answers, pressHandler } = this.props;
-    const { selected, duration } = this.state;
+    const { question, answers } = this.props;
+    const { selected } = this.state;
 
     return (
       <>
