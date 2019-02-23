@@ -16,9 +16,10 @@ export default class TimedInput extends React.Component {
   }
 
   handlePress(data) {
-    if (this.props.isEnabled) {
+    const { isEnabled, pressHandler } = this.props;
+    if (isEnabled) {
       this.setState({ selected: data });
-      this.props.pressHandler(data);
+      pressHandler(data);
     }
   }
 
@@ -28,24 +29,22 @@ export default class TimedInput extends React.Component {
 
     return (
       <>
-        <QuestionText>{question}</QuestionText>
-        {answers.map((data, key) => {
-          return (
-            <View key={key}>
-              {selected === data ? (
-                <CheckboxWrapper>
-                  <Checkbox checked />
-                  <Text>{data.label}</Text>
-                </CheckboxWrapper>
-              ) : (
-                <CheckboxWrapper onPress={() => this.handlePress(data)}>
-                  <Checkbox />
-                  <Text>{data.label}</Text>
-                </CheckboxWrapper>
-              )}
-            </View>
-          );
-        })}
+        {question && <QuestionText>{question}</QuestionText>}
+        {answers.map(data => (
+          <View key={data.label}>
+            {selected === data ? (
+              <CheckboxWrapper>
+                <Checkbox checked />
+                <Text>{data.label}</Text>
+              </CheckboxWrapper>
+            ) : (
+              <CheckboxWrapper onPress={() => this.handlePress(data)}>
+                <Checkbox />
+                <Text>{data.label}</Text>
+              </CheckboxWrapper>
+            )}
+          </View>
+        ))}
       </>
     );
   }

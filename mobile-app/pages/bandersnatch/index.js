@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import styled from 'styled-components/native';
 import TimedInput from '../../components/TimedInput';
 import questions from '../../data/questions';
@@ -15,7 +15,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.interval = undefined;
     this.state = {
+      showAnswers: false,
       duration: 10,
       currentQuestion: undefined,
       prevAnswer: undefined,
@@ -24,20 +26,7 @@ export default class App extends React.Component {
     };
   }
 
-  tick() {
-    const { currentQuestion } = this.state;
-
-    this.setState(state => ({
-      duration: state.duration - 1,
-    }));
-
-    if (this.state.duration === 0) {
-      this.handlePress(currentQuestion.A[Math.floor(Math.random() * currentQuestion.A.length)]);
-    }
-  }
-
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
     this.setState({
       currentQuestion: questions.question,
       isActive: true,
@@ -48,39 +37,80 @@ export default class App extends React.Component {
     clearInterval(this.interval);
   }
 
-  handleAnswer = key => {
-    if (this.state.duration !== 0) {
-      this.setState(prevState => ({
-        duration: 10,
-        prevAnswer: key.label,
-        score: prevState.score + key.score,
-        currentQuestion: key.nextQ ? key.nextQ : undefined,
-      }));
-    }
-
-    if (!key.nextQ) {
-      this.setState({
-        isActive: false,
-        duration: 0,
-      });
-    }
+  startInterval = () => {
+    this.interval = setInterval(() => this.tick(), 1000);
   };
 
+  stopInterval = () => {
+    clearInterval(this.interval);
+    this.interval = undefined;
+  };
+
+  handleShowAnswers = () => {
+    this.startInterval();
+    this.setState({
+      showAnswers: true,
+    });
+  };
+
+  handleAnswer = key => {
+    this.stopInterval();
+    this.setState(prevState => ({
+      duration: key.nextQ ? 10 : 0,
+      showAnswers: false,
+      prevAnswer: key.label,
+      score: prevState.score + key.score,
+      currentQuestion: key.nextQ ? key.nextQ : undefined,
+    }));
+  };
+
+  tick() {
+    const { currentQuestion, duration } = this.state;
+
+    this.setState(state => ({
+      duration: state.duration - 1,
+    }));
+
+    if (duration === 0) {
+      this.stopInterval();
+      this.handleAnswer(currentQuestion.A[Math.floor(Math.random() * currentQuestion.A.length)]);
+    }
+  }
+
   render() {
-    const { duration, currentQuestion, prevAnswer, score, isActive } = this.state;
+    const { duration, currentQuestion, prevAnswer, score, isActive, showAnswers } = this.state;
+
+    if (currentQuestion) {
+      return (
+        <RootView>
+          <Text>{duration}</Text>
+          <Text>{currentQuestion.Q}</Text>
+          {showAnswers ? (
+            <TimedInput
+              answers={currentQuestion.A}
+              pressHandler={this.handleAnswer}
+              isEnabled={isActive}
+            />
+          ) : (
+            <Button
+              title="Show Answers"
+              onPress={() => {
+                this.setState({
+                  showAnswers: true,
+                });
+                this.startInterval();
+              }}
+            />
+          )}
+          <Text>Score: {score}</Text>
+          {prevAnswer && <Text>{prevAnswer}</Text>}
+        </RootView>
+      );
+    }
+
     return (
       <RootView>
-        {currentQuestion && <Text>{duration}</Text>}
-        {currentQuestion && (
-          <TimedInput
-            question={currentQuestion.Q}
-            answers={currentQuestion.A}
-            pressHandler={this.handleAnswer}
-            isEnabled={isActive}
-          />
-        )}
         <Text>Score: {score}</Text>
-        {prevAnswer && currentQuestion && <Text>{prevAnswer}</Text>}
       </RootView>
     );
   }
