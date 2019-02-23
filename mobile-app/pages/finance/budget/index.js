@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text, View, SectionList, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ListHeader from './ListHeader';
+import ListRow from './ListRow';
 
-const RootView = styled(View)`
+const RootView = styled(ScrollView)`
   display: flex;
-  flex: 1;
   flex-direction: column;
   padding: 16px;
   background-color: #000;
@@ -18,6 +19,7 @@ const StyledText = styled(Text)`
 
 const BudgetCard = styled(LinearGradient)`
   display: flex;
+  flex: 1;
   flex-direction: column;
   position: relative;
   margin: 16px 0;
@@ -55,6 +57,10 @@ const MonthPickerToggle = styled(TouchableOpacity)`
   height: 48px;
 `;
 
+const BudgetList = styled(FlatList)`
+  margin-bottom: 16px;
+`;
+
 export default function FinanceBudgetScreen() {
   return (
     <RootView>
@@ -78,17 +84,27 @@ export default function FinanceBudgetScreen() {
           </BudgetCardGridInner>
         </BudgetCardGrid>
       </BudgetCard>
-      <SectionList
-        renderItem={({ item, index, section }) => <StyledText key={index}>{item}</StyledText>}
-        renderSectionHeader={({ section: { title } }) => (
-          <StyledText style={{ fontWeight: 'bold' }}>{title}</StyledText>
-        )}
-        sections={[
-          { title: 'Title1', data: ['item1', 'item2'] },
-          { title: 'Title2', data: ['item3', 'item4'] },
-          { title: 'Title3', data: ['item5', 'item6'] },
+      <BudgetList
+        ListHeaderComponent={<ListHeader color="magenta" title="Pengeluaran" />}
+        data={[
+          { key: 'Makanan', budgeted: 2000000, spent: 0, balance: 2000000 },
+          { key: 'General', budgeted: 500000, spent: 0, balance: 1500000 },
+          { key: 'Tagihan', budgeted: 400000, spent: 0, balance: 1000000 },
+          { key: 'Tagihan Fleksibel', budgeted: 0, spent: 0, balance: 0 },
         ]}
-        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <ListRow item={item} />}
+      />
+      <BudgetList
+        ListHeaderComponent={
+          <ListHeader isIncome color="#9b45ff" title="Simpanan &amp; Investasi" />
+        }
+        data={[{ key: 'Deposito', income: 2000000 }, { key: 'Reksadana', income: 1500000 }]}
+        renderItem={({ item }) => <ListRow isIncome item={item} />}
+      />
+      <BudgetList
+        ListHeaderComponent={<ListHeader isIncome color="#00d28a" title="Pendapatan" />}
+        data={[{ key: 'Gaji', income: 2000000 }, { key: 'Hasil Usaha', income: 2000000 }]}
+        renderItem={({ item }) => <ListRow isIncome item={item} />}
       />
     </RootView>
   );
