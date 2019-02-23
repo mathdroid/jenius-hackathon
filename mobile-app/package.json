@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prestart": "node tools/link-workspaces.js",
     "start": "expo start",
     "android": "yarn start --android",
     "ios": "yarn start --ios",
@@ -20,7 +19,6 @@
     "styled-components": "^4.1.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "crna-make-symlinks-for-yarn-workspaces": "^1.0.1"
+    "babel-preset-expo": "^5.0.0"
   }
 }

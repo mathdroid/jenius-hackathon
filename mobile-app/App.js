@@ -8,7 +8,7 @@ export default class App extends React.Component {
     return (
       <RootView>
         <Text>test</Text>
-        <TimedInput />
+        <TimedInput question="Some Question" answers={['answer1', 'answer2']} />
       </RootView>
     );
   }
