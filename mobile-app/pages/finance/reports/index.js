@@ -11,7 +11,6 @@ const RootView = styled(View)`
 `;
 
 const StyledText = styled(Text)`
-  margin-top: ${props => (props.header ? 16 : 0)};
   margin-bottom: ${props => (props.header ? 8 : 0)};
   color: #fff;
   font-size: ${props => (props.header ? 32 : 16)};
@@ -21,6 +20,7 @@ const StyledText = styled(Text)`
 const Card = styled(View)``;
 
 const CardItem = styled(View)`
+  margin-top: ${props => (props.header && !props.first ? 16 : 0)};
   background-color: ${props => (props.header ? 'transparent' : '#333')};
 `;
 
@@ -28,7 +28,7 @@ export default function FinanceReportsScreen() {
   return (
     <RootView>
       <Card>
-        <CardItem header bordered>
+        <CardItem header first bordered>
           <StyledText header>Net Worth</StyledText>
         </CardItem>
         <CardItem bordered>
