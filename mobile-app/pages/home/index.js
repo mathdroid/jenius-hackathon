@@ -77,7 +77,7 @@ export default class Home extends React.Component {
         </View>
         <View
           style={{
-            aspectRatio: 1.8,
+            aspectRatio: 1.38,
             width: '100%',
             alignSelf: 'stretch',
             marginVertical: 5,
