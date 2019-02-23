@@ -16,7 +16,7 @@ const PaneWrapper = styled(View)`
 
 const PaneTitle = styled(View)`
   border-bottom-width: 1px;
-  border-color: rgba(200, 200, 200, 1);
+  border-color: rgb(237, 237, 237);
   padding: 16px;
 `;
 
@@ -25,7 +25,7 @@ const PaneMenuItem = styled(View)`
   flex-direction: row;
   align-items: center;
   border-bottom-width: 1px;
-  border-color: rgba(200, 200, 200, 1);
+  border-color: rgb(237, 237, 237);
   padding: 16px;
 `;
 
