@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export default class TimedInput extends React.Component {
   static defaultProps = {
-    duration: 3,
+    duration: 10,
   };
 
   constructor(props) {
@@ -29,10 +29,10 @@ export default class TimedInput extends React.Component {
     }
   }
 
-  handlePress(key) {
-    this.setState({ selected: key, isEnabled: false });
+  handlePress(data) {
+    this.setState({ selected: data, isEnabled: false });
     clearInterval(this.interval);
-    this.props.pressHandler(key);
+    this.props.pressHandler(data);
   }
 
   componentDidMount() {
@@ -54,18 +54,18 @@ export default class TimedInput extends React.Component {
         <QuestionText>
           {question} {duration}
         </QuestionText>
-        {answers.map(data => {
+        {answers.map((data, key) => {
           return (
-            <View key={data}>
+            <View key={key}>
               {selected === data ? (
                 <CheckboxWrapper>
                   <Checkbox checked />
-                  <Text>{data}</Text>
+                  <Text>{data.label}</Text>
                 </CheckboxWrapper>
               ) : (
                 <CheckboxWrapper onPress={() => this.handlePress(data)}>
                   <Checkbox />
-                  <Text>{data}</Text>
+                  <Text>{data.label}</Text>
                 </CheckboxWrapper>
               )}
             </View>
