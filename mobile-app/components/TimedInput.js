@@ -23,6 +23,7 @@ export default class TimedInput extends React.Component {
     }));
 
     if (this.state.duration === 0) {
+      this.setState({ isEnabled: false });
       clearInterval(this.interval);
     }
   }
@@ -58,13 +59,15 @@ export default class TimedInput extends React.Component {
           return (
             <View key={data}>
               {selected === data ? (
-                <Checkbox>
-                  <Text>isChecked {data}</Text>
-                </Checkbox>
-              ) : (
-                <Checkbox onPress={() => this.handlePress(data)}>
+                <CheckboxWrapper>
+                  <Checkbox checked />
                   <Text>{data}</Text>
-                </Checkbox>
+                </CheckboxWrapper>
+              ) : (
+                <CheckboxWrapper onPress={() => this.handlePress(data)}>
+                  <Checkbox />
+                  <Text>{data}</Text>
+                </CheckboxWrapper>
               )}
             </View>
           );
@@ -74,11 +77,24 @@ export default class TimedInput extends React.Component {
   }
 }
 
+const Checkbox = styled(View)`
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 24px;
+  border-color: ${props => (props.checked ? '#8fbc5a' : '#7d7d7d')};
+`;
+
 const QuestionText = styled(Text)`
   margin-bottom: 4px;
 `;
 
-const Checkbox = styled(TouchableOpacity)`
+const CheckboxWrapper = styled(TouchableOpacity)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 4px 8px;
 `;
 
