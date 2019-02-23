@@ -7,7 +7,6 @@
   "author": "Resi Respati <resir014@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["mobile-app"],
   "dependencies": {},
   "devDependencies": {}
 }
