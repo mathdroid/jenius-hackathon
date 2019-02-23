@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import styled from 'styled-components/native';
 import { Text, View } from 'react-native';
@@ -15,17 +16,21 @@ const RowHeading = styled(View)`
 `;
 
 const RowHeadingText = styled(Text)`
+  font-size: 14px;
   color: #fff;
-  font-weight: 400;
+  font-family: ${props =>
+    props.bold ? 'inter-bold' : props.light ? 'inter-extralight' : 'inter-regular'};
 `;
 
 const RowItem = styled(View)`
-  width: 22%;
+  width: 23%;
 `;
 
 const RowItemText = styled(Text)`
+  font-size: 14px;
   color: #fff;
-  font-weight: 400;
+  font-family: ${props =>
+    props.bold ? 'inter-bold' : props.light ? 'inter-extralight' : 'inter-regular'};
   text-align: right;
 `;
 
