@@ -236,7 +236,14 @@ class BandersnatchPage extends Component {
                 </TextContainer>
                 <Lottie source={lottieSuccess} duration={7500} />
                 <View>
-                  <Button onPress={this.reset} title="Ulang" />
+                  <Button
+                    onPress={async () => {
+                      await this.reset();
+                      navigation.goBack();
+                      navigation.navigate('Bandersnatch');
+                    }}
+                    title="Ulang"
+                  />
                   <Button
                     onPress={() => {
                       navigation.goBack();
