@@ -1,80 +1,89 @@
 {
   "question": {
     "Q": "Yuni usia 26, bekerja sebagai karyawan di suatu perusahaan swasta. Gaji bulanan Yuni 8 juta rupiah. Yuni masih tinggal bersama orang tua, dan sedang mencicil uang kredit laptop dengan total kurang lebih 12 juta rupiah.Yuni baru saja menerima gaji, dan ia sudah harus membayar cicilan laptop sejumlah 1 juta rupiah.Dalam kondisi keuangan normal, sebaiknya Yuni: ",
-    "A": [{
+    "A": [
+      {
         "label": "Mengajukan pinjaman untuk membayar cicilan.",
         "score": 0.2,
         "nextQ": {
           "Q": "Karena Yuni mengajukan pinjaman sejumlah 1.2 juta(termasuk bunga) untuk membayar cicilan laptop, di tengah bulan jumlah uang di rekening Yuni masih cenderung aman. Yuni pun berpikir untuk berakhir pekan di Bali untuk refreshing karena pekerjaan di kantor sungguh membuat penat kepala Yuni. Yuni sebaiknya:",
-          "A": [{
+          "A": [
+            {
               "label": "Pergi ke Bali akhir pekan ini, karena kondisi keuangan masih aman.",
               "score": 0.4,
               "nextQ": {
                 "Q": "Yuni melakukan kunjungan kerja ke luar negeri. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Yuni di luar negeri. Karena Yuni baru saja berakhir pekan di Bali, saldo Yuni sudah lumayan menipis. Biaya berobat Yuni apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Yuni sebaiknya:",
-                "A": [{
-                  "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat",
-                  "score": 0.4,
-                  "nextQ": {
-                    "Q": "Budi usia 25, bekerja sebagai karyawan di suatu perusahaan swasta. Gaji bulanan Budi 8 juta rupiah. Budi masih tinggal bersama orang tua, dan sedang mencicil uang kredit motor dengan total kurang lebih 12 juta rupiah.Budi baru saja menerima gaji, dan ia sudah harus membayar cicilan motor sejumlah 1 juta rupiah.Dalam kondisi keuangan normal, sebaiknya Budi: ",
-                    "A": [{
-                        "label": "Mengajukan pinjaman untuk membayar cicilan.",
-                        "score": 0.2,
-                        "nextQ": {
-                          "Q": "Karena Budi mengajukan pinjaman sejumlah 1.2 juta(termasuk bunga) untuk membayar cicilan motor, di tengah bulan jumlah uang di rekening Budi masih cenderung aman. Budi pun berpikir untuk berakhir pekan di Bandung untuk refreshing karena pekerjaan di kantor sungguh membuat penat kepala Budi. Budi sebaiknya:",
-                          "A": [{
-                              "label": "Pergi ke Bandung akhir pekan ini, karena kondisi keuangan masih aman.",
-                              "score": 0.4,
-                            },
-                            {
-                              "label": "Pergi ke Bandung setelah membayar cicilan pinjaman dan cicilan motor bulan depan.",
-                              "score": 0.6
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "label": "Membayar tunai dengan uang gaji Budi.",
-                        "score": 0.8,
-                        "nextQ": {
-                          "Q": "Setiap hari, Budi makan siang di food court gedung kantor. Ia dan teman-temannya terbiasa makan siang bersama disana untuk merawat silaturahmi. Rata-rata uang yang terpakai untuk makan siang tiap harinya 60 ribu rupiah. Sekarang sudah tengah bulan, dan gaji Budi setelah berbagai pengeluaran tinggal 3 juta rupiah. Sebaiknya Budi:",
-                          "A": [{
-                              "label": "Mulai membawa bekal tiap dua hari.",
-                              "score": 0.6,
-                              "nextQ": {
-                                "Q": "Budi melakukan kunjungan kerja ke luar negeri bersama rekan-rekannya. Pacar Budi, Rani bekerja sebagai karyawan di perusahaan lain. Rani minta dititipkan gadget terbaru dari luar-negeri. Budi sudah menjalin hubungan dengan Rani selama satu setengah tahun, dan Rani berjanji akan mengganti uangnya bulan depan setelah ia menerima gaji. Budi sebaiknya:",
-                                "A": [{
-                                    "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
-                                    "score": 0.5
-                                  },
-                                  {
-                                    "label": "Mengajukan pinjaman FlexiCash jangka pendek untuk menalangi pembelian oleh-oleh.",
-                                    "score": 0.5
-                                  }
-                                ]
+                "A": [
+                  {
+                    "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat",
+                    "score": 0.4,
+                    "nextQ": {
+                      "Q": "Budi usia 25, bekerja sebagai karyawan di suatu perusahaan swasta. Gaji bulanan Budi 8 juta rupiah. Budi masih tinggal bersama orang tua, dan sedang mencicil uang kredit motor dengan total kurang lebih 12 juta rupiah.Budi baru saja menerima gaji, dan ia sudah harus membayar cicilan motor sejumlah 1 juta rupiah.Dalam kondisi keuangan normal, sebaiknya Budi: ",
+                      "A": [
+                        {
+                          "label": "Mengajukan pinjaman untuk membayar cicilan.",
+                          "score": 0.2,
+                          "nextQ": {
+                            "Q": "Karena Budi mengajukan pinjaman sejumlah 1.2 juta(termasuk bunga) untuk membayar cicilan motor, di tengah bulan jumlah uang di rekening Budi masih cenderung aman. Budi pun berpikir untuk berakhir pekan di Bandung untuk refreshing karena pekerjaan di kantor sungguh membuat penat kepala Budi. Budi sebaiknya:",
+                            "A": [
+                              {
+                                "label": "Pergi ke Bandung akhir pekan ini, karena kondisi keuangan masih aman.",
+                                "score": 0.4
+                              },
+                              {
+                                "label": "Pergi ke Bandung setelah membayar cicilan pinjaman dan cicilan motor bulan depan.",
+                                "score": 0.6
                               }
-                            },
-                            {
-                              "label": "Terus makan di foodcourt seperti biasa.",
-                              "score": 0.4,
-                              "nextQ": {
-                                "Q": "Budi melakukan kunjungan kerja ke luar negeri. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Budi di luar negeri. Budi terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Budi sebaiknya:",
-                                "A": [{
-                                    "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
-                                    "score": 0.6
-                                  },
-                                  {
-                                    "label": "Menggunakan uang saku kunjungan kerja yang diberi oleh kantor.",
-                                    "score": 0.4
-                                  }
-                                ]
+                            ]
+                          }
+                        },
+                        {
+                          "label": "Membayar tunai dengan uang gaji Budi.",
+                          "score": 0.8,
+                          "nextQ": {
+                            "Q": "Setiap hari, Budi makan siang di food court gedung kantor. Ia dan teman-temannya terbiasa makan siang bersama disana untuk merawat silaturahmi. Rata-rata uang yang terpakai untuk makan siang tiap harinya 60 ribu rupiah. Sekarang sudah tengah bulan, dan gaji Budi setelah berbagai pengeluaran tinggal 3 juta rupiah. Sebaiknya Budi:",
+                            "A": [
+                              {
+                                "label": "Mulai membawa bekal tiap dua hari.",
+                                "score": 0.6,
+                                "nextQ": {
+                                  "Q": "Budi melakukan kunjungan kerja ke luar negeri bersama rekan-rekannya. Pacar Budi, Rani bekerja sebagai karyawan di perusahaan lain. Rani minta dititipkan gadget terbaru dari luar-negeri. Budi sudah menjalin hubungan dengan Rani selama satu setengah tahun, dan Rani berjanji akan mengganti uangnya bulan depan setelah ia menerima gaji. Budi sebaiknya:",
+                                  "A": [
+                                    {
+                                      "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
+                                      "score": 0.5
+                                    },
+                                    {
+                                      "label": "Mengajukan pinjaman FlexiCash jangka pendek untuk menalangi pembelian oleh-oleh.",
+                                      "score": 0.5
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "label": "Terus makan di foodcourt seperti biasa.",
+                                "score": 0.4,
+                                "nextQ": {
+                                  "Q": "Budi melakukan kunjungan kerja ke luar negeri. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Budi di luar negeri. Budi terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Budi sebaiknya:",
+                                  "A": [
+                                    {
+                                      "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
+                                      "score": 0.6
+                                    },
+                                    {
+                                      "label": "Menggunakan uang saku kunjungan kerja yang diberi oleh kantor.",
+                                      "score": 0.4
+                                    }
+                                  ]
+                                }
                               }
-                            }
-                          ]
+                            ]
+                          }
                         }
-                      }
-                    ]
+                      ]
+                    }
                   }
-                }]
+                ]
               }
             },
             {
@@ -82,7 +91,8 @@
               "score": 0.6,
               "nextQ": {
                 "Q": "Yuni melakukan kunjungan kerja ke luar negeri. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Yuni di luar negeri. Yuni terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Yuni sebaiknya:",
-                "A": [{
+                "A": [
+                  {
                     "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
                     "score": 0.6
                   },
@@ -92,8 +102,6 @@
                   }
                 ]
               }
-
-
             }
           ]
         }
@@ -103,31 +111,37 @@
         "score": 0.8,
         "nextQ": {
           "Q": "Setiap hari, Yuni makan siang di food court gedung kantor. Ia dan teman-temannya terbiasa makan siang bersama disana untuk merawat silaturahmi. Rata-rata uang yang terpakai untuk makan siang tiap harinya 60 ribu rupiah. Sekarang sudah tengah bulan, dan gaji Yuni setelah berbagai pengeluaran tinggal 3 juta rupiah. Sebaiknya Yuni:",
-          "A": [{
+          "A": [
+            {
               "label": "Mulai membawa bekal tiap dua hari.",
               "score": 0.6,
               "nextQ": {
                 "Q": "Yuni melakukan kunjungan kerja ke luar negeri bersama rekan-rekannya. Pacar Yuni, Andi bekerja sebagai karyawan di perusahaan lain. Andi minta dititipkan model plastik Star Wars terbaru dari luar-negeri. Yuni sudah menjalin hubungan dengan Andi selama satu setengah tahun, dan Andi berjanji akan mengganti uangnya bulan depan setelah ia menerima gaji. Yuni sebaiknya:",
-                "A": [{
+                "A": [
+                  {
                     "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
                     "score": 0.5,
                     "nextQ": {
                       "question": {
                         "Q": "Andre usia 25, bekerja sebagai karyawan di suatu perusahaan swasta. upah bulanan Andre 8 juta rupiah. Andre masih tinggal bersama orang tua, dan sedang mencicil uang kredit smartphone dengan total kurang lebih 12 juta rupiah.Andre baru saja menerima upah, dan ia sudah harus membayar cicilan smartphone sejumlah 1 juta rupiah.Dalam kondisi keuangan normal, sebaiknya Andre: ",
-                        "A": [{
+                        "A": [
+                          {
                             "label": "Mengajukan pinjaman untuk membayar cicilan.",
                             "score": 0.2,
                             "nextQ": {
                               "Q": "Karena Andre mengajukan pinjaman sejumlah 1.2 juta(termasuk bunga) untuk membayar cicilan smartphone, di tengah bulan jumlah uang di rekening Andre masih cenderung aman. Andre pun berpikir untuk berakhir pekan di Bandung untuk refreshing karena pekerjaan di kantor sungguh membuat penat kepala Andre. Andre sebaiknya:",
-                              "A": [{
+                              "A": [
+                                {
                                   "label": "Pergi ke Bandung akhir pekan ini, karena kondisi keuangan masih aman.",
                                   "score": 0.4,
                                   "nextQ": {
                                     "Q": "Andre melakukan kunjungan kerja ke Jepang. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Andre di Jepang. Karena Andre baru saja berakhir pekan di Bandung, saldo Andre sudah lumayan menipis. Biaya berobat Andre apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Andre sebaiknya:",
-                                    "A": [{
-                                      "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat",
-                                      "score": 0.4
-                                    }]
+                                    "A": [
+                                      {
+                                        "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat",
+                                        "score": 0.4
+                                      }
+                                    ]
                                   }
                                 },
                                 {
@@ -142,12 +156,14 @@
                             "score": 0.8,
                             "nextQ": {
                               "Q": "Setiap hari, Andre makan siang di food court gedung kantor. Ia dan teman-temannya terbiasa makan siang bersama disana untuk merawat silaturahmi. Rata-rata uang yang terpakai untuk makan siang tiap harinya 60 ribu rupiah. Sekarang sudah tengah bulan, dan upah Andre setelah berbagai pengeluaran tinggal 3 juta rupiah. Sebaiknya Andre:",
-                              "A": [{
+                              "A": [
+                                {
                                   "label": "Mulai membawa bekal tiap dua hari.",
                                   "score": 0.6,
                                   "nextQ": {
                                     "Q": "Andre melakukan kunjungan kerja ke Jepang bersama rekan-rekannya. Pacar Andre, Siska bekerja sebagai karyawan di perusahaan lain. Siska minta dititipkan gadget terbaru dari luar-negeri. Andre sudah menjalin hubungan dengan Siska selama satu setengah tahun, dan Siska berjanji akan mengganti uangnya bulan depan setelah ia menerima upah. Andre sebaiknya:",
-                                    "A": [{
+                                    "A": [
+                                      {
                                         "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
                                         "score": 0.5
                                       },
@@ -163,7 +179,8 @@
                                   "score": 0.4,
                                   "nextQ": {
                                     "Q": "Andre melakukan kunjungan kerja ke Jepang. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Andre di Jepang. Andre terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Andre sebaiknya:",
-                                    "A": [{
+                                    "A": [
+                                      {
                                         "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
                                         "score": 0.6
                                       },
@@ -180,7 +197,6 @@
                         ]
                       }
                     }
-
                   },
                   {
                     "label": "Mengajukan pinjaman FlexiCash jangka pendek untuk menalangi pembelian oleh-oleh.",
@@ -192,6 +208,95 @@
             {
               "label": "Terus makan di foodcourt seperti biasa.",
               "score": 0.4,
+              "nextQ": {
+                "Q": "Yuni melakukan kunjungan kerja ke luar negeri bersama rekan-rekannya. Pacar Yuni, Andi bekerja sebagai karyawan di perusahaan lain. Andi minta dititipkan model plastik Star Wars terbaru dari luar-negeri. Yuni sudah menjalin hubungan dengan Andi selama satu setengah tahun, dan Andi berjanji akan mengganti uangnya bulan depan setelah ia menerima gaji. Yuni sebaiknya:",
+                "A": [
+                  {
+                    "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
+                    "score": 0.5,
+                    "nextQ": {
+                      "question": {
+                        "Q": "Andre usia 25, bekerja sebagai karyawan di suatu perusahaan swasta. upah bulanan Andre 8 juta rupiah. Andre masih tinggal bersama orang tua, dan sedang mencicil uang kredit smartphone dengan total kurang lebih 12 juta rupiah.Andre baru saja menerima upah, dan ia sudah harus membayar cicilan smartphone sejumlah 1 juta rupiah.Dalam kondisi keuangan normal, sebaiknya Andre: ",
+                        "A": [
+                          {
+                            "label": "Mengajukan pinjaman untuk membayar cicilan.",
+                            "score": 0.2,
+                            "nextQ": {
+                              "Q": "Karena Andre mengajukan pinjaman sejumlah 1.2 juta(termasuk bunga) untuk membayar cicilan smartphone, di tengah bulan jumlah uang di rekening Andre masih cenderung aman. Andre pun berpikir untuk berakhir pekan di Bandung untuk refreshing karena pekerjaan di kantor sungguh membuat penat kepala Andre. Andre sebaiknya:",
+                              "A": [
+                                {
+                                  "label": "Pergi ke Bandung akhir pekan ini, karena kondisi keuangan masih aman.",
+                                  "score": 0.4,
+                                  "nextQ": {
+                                    "Q": "Andre melakukan kunjungan kerja ke Jepang. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Andre di Jepang. Karena Andre baru saja berakhir pekan di Bandung, saldo Andre sudah lumayan menipis. Biaya berobat Andre apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Andre sebaiknya:",
+                                    "A": [
+                                      {
+                                        "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat",
+                                        "score": 0.4
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "label": "Pergi ke Bandung setelah membayar cicilan pinjaman dan cicilan smartphone bulan depan.",
+                                  "score": 0.6
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "label": "Membayar tunai dengan uang upah Andre.",
+                            "score": 0.8,
+                            "nextQ": {
+                              "Q": "Setiap hari, Andre makan siang di food court gedung kantor. Ia dan teman-temannya terbiasa makan siang bersama disana untuk merawat silaturahmi. Rata-rata uang yang terpakai untuk makan siang tiap harinya 60 ribu rupiah. Sekarang sudah tengah bulan, dan upah Andre setelah berbagai pengeluaran tinggal 3 juta rupiah. Sebaiknya Andre:",
+                              "A": [
+                                {
+                                  "label": "Mulai membawa bekal tiap dua hari.",
+                                  "score": 0.6,
+                                  "nextQ": {
+                                    "Q": "Andre melakukan kunjungan kerja ke Jepang bersama rekan-rekannya. Pacar Andre, Siska bekerja sebagai karyawan di perusahaan lain. Siska minta dititipkan gadget terbaru dari luar-negeri. Andre sudah menjalin hubungan dengan Siska selama satu setengah tahun, dan Siska berjanji akan mengganti uangnya bulan depan setelah ia menerima upah. Andre sebaiknya:",
+                                    "A": [
+                                      {
+                                        "label": "Menggunakan tabungan untuk menalangi pembelian oleh-oleh.",
+                                        "score": 0.5
+                                      },
+                                      {
+                                        "label": "Mengajukan pinjaman FlexiCash jangka pendek untuk menalangi pembelian oleh-oleh.",
+                                        "score": 0.5
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "label": "Terus makan di foodcourt seperti biasa.",
+                                  "score": 0.4,
+                                  "nextQ": {
+                                    "Q": "Andre melakukan kunjungan kerja ke Jepang. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Andre di Jepang. Andre terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Andre sebaiknya:",
+                                    "A": [
+                                      {
+                                        "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
+                                        "score": 0.6
+                                      },
+                                      {
+                                        "label": "Menggunakan uang saku kunjungan kerja yang diberi oleh kantor.",
+                                        "score": 0.4
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "label": "Mengajukan pinjaman FlexiCash jangka pendek untuk menalangi pembelian oleh-oleh.",
+                    "score": 0.5
+                  }
+                ]
+              }
             }
           ]
         }
