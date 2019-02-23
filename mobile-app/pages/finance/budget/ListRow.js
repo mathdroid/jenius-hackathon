@@ -72,7 +72,7 @@ export default function ListRow({ isIncome, item, onRowChange }) {
           placeholder="..."
           placeholderTextColor="#666"
           value={spent.toString()}
-          onChangeText={text => onRowChange(parseInt(text, 10), key)}
+          onChangeText={text => onRowChange(text ? parseInt(text, 10) : 0, key)}
         />
       </RowItem>
       <RowItem>
