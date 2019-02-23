@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
-import { Animated, Easing, View } from 'react-native';
+import { Animated, Easing, View, AsyncStorage } from 'react-native';
 
 import { RootView, Button, InterText, TextContainer, CountdownBar } from './components';
 import Animation from './components/animation';
 import FontLoader from './components/font-loader';
 
 import lottieRocket from './lottie-rocket.json';
+import lottieFinished from './lottie-finished.json';
+import lottieSuccess from './lottie-success.json';
 import questions from './questions.json';
+
+class Lottie extends Component {
+  state = {
+    progress: new Animated.Value(this.props.start || 0),
+  };
+  componentDidMount() {
+    const { duration } = this.props;
+    const { progress } = this.state;
+    Animated.timing(progress, {
+      toValue: 1,
+      duration,
+      easing: Easing.linear,
+    }).start();
+  }
+
+  render() {
+    const { source } = this.props;
+    const { progress } = this.state;
+    return <Animation source={source} progress={progress} />;
+  }
+}
 
 class QuestionContainer extends Component {
   initialState = {
@@ -72,8 +95,11 @@ class QuestionContainer extends Component {
     const { showAnswers, remainingTime } = this.state;
     return (
       <>
+        {question.isFinished ? <Lottie source={lottieFinished} duration={2000} /> : null}
         <TextContainer>
-          <InterText>{question.Q}</InterText>
+          <InterText>
+            {question.isFinished ? 'Selamat! Anda telah menyelesaikan Flexi Quiz!' : question.Q}
+          </InterText>
         </TextContainer>
         <View>
           {showAnswers ? (
@@ -119,7 +145,8 @@ class BandersnatchPage extends Component {
     score: 0,
   };
 
-  reset = () => {
+  reset = async () => {
+    await AsyncStorage.multiRemove(['@bandersnatch/question', '@bandersnatch/score']);
     this.setState({
       isQuizStarted: false,
       isQuizFinished: false,
@@ -130,16 +157,21 @@ class BandersnatchPage extends Component {
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { rocketProgress } = this.state;
+    const [question, score] = (await Promise.all([
+      AsyncStorage.getItem('@bandersnatch/question'),
+      AsyncStorage.getItem('@bandersnatch/score'),
+    ])).map(JSON.parse);
+    this.setState({ question: question || questions.question, score: score || 0 });
     Animated.timing(rocketProgress, {
       toValue: 0.75,
-      duration: 2500,
+      duration: 3500,
       easing: Easing.linear,
     }).start();
   }
 
-  startQuiz = () => {
+  startQuiz = async () => {
     const { rocketProgress } = this.state;
     this.setState({ disableButtonPress: true });
 
@@ -148,7 +180,7 @@ class BandersnatchPage extends Component {
       duration: 1000,
       easing: Easing.linear,
     }).start(() => {
-      this.setState({ isQuizStarted: true, question: questions.question });
+      this.setState({ isQuizStarted: true });
     });
   };
 
@@ -157,13 +189,24 @@ class BandersnatchPage extends Component {
   };
 
   changeQuestion = q => {
-    this.setState(state => ({
-      question: q.nextQ || { Q: 'Finished', isFinished: true },
-      score: state.score + q.score,
-    }));
+    const nextQ = q.nextQ || { Q: 'Finished', isFinished: true };
+    this.setState(
+      state => ({
+        question: nextQ,
+        score: state.score + q.score,
+      }),
+      async () => {
+        const { score } = this.state;
+        await Promise.all([
+          AsyncStorage.setItem('@bandersnatch/question', JSON.stringify(nextQ)),
+          AsyncStorage.setItem('@bandersnatch/score', JSON.stringify(score)),
+        ]);
+      },
+    );
   };
 
   render() {
+    const { navigation } = this.props;
     const {
       rocketProgress,
       isQuizStarted,
@@ -183,7 +226,27 @@ class BandersnatchPage extends Component {
         <RootView>
           {isQuizStarted ? (
             isQuizFinished ? (
-              <InterText>{score}</InterText>
+              <>
+                <TextContainer>
+                  <InterText>
+                    {score >= 1.5
+                      ? `Selamat! Anda telah berhasil menyelesaikan Flexi Quiz dengan skor sangat baik! Mulai sekarang anda berhak mengajukan pinjaman dengan batas atas Rp 14,000,000,-`
+                      : `Selamat! Anda telah menyelesaikan Flexi Quiz. Mulai sekarang anda berhak mengajukan pinjaman dengan batas atas Rp 8,000,000,-`}
+                  </InterText>
+                </TextContainer>
+                <Lottie source={lottieSuccess} duration={7500} />
+                <View>
+                  <Button onPress={this.reset} title="Ulang" />
+                  <Button
+                    onPress={() => {
+                      navigation.goBack();
+                      navigation.navigate('Finance');
+                      navigation.navigate('Budget');
+                    }}
+                    title="Buat rencana keuangan"
+                  />
+                </View>
+              </>
             ) : question ? (
               <QuestionContainer
                 question={question}
@@ -201,9 +264,17 @@ class BandersnatchPage extends Component {
                 }}
               />
               <InterText flex={1} ta="center">
-                Hi. I wanna play a game
+                Halo! Selamat datang di Flexi Quiz. Sebelum anda bisa mengajukan pinjaman melalui
+                FlexiCash, anda harus menjawab sejumlah soal cerita yang banyak kaitannya dengan
+                kehidupan finansial sehari-hari. Selamat Mengerjakan!
               </InterText>
-              <Button disabled={disableButtonPress} onPress={this.startQuiz} title="Mulai kuis" />
+              <Button
+                disabled={disableButtonPress}
+                onPress={this.startQuiz}
+                title={
+                  question && question.Q !== questions.question.Q ? 'Lanjutkan kuis' : 'Mulai kuis'
+                }
+              />
             </>
           )}
         </RootView>
