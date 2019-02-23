@@ -36,7 +36,7 @@ const MenuView = styled(View)`
 
 const CardText = styled(Text)`
   margin-bottom: ${props => (props.subheading ? '8px' : 0)};
-  font-size: 16px;
+  font-size: ${props => (props.subheading ? 14 : 16)};
 
   color: ${props => (props.bold ? 'rgb(125, 125, 125)' : 'rgb(165, 165, 165)')};
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
