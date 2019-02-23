@@ -22,7 +22,7 @@ const BudgetCard = styled(LinearGradient)`
   flex: 1;
   flex-direction: column;
   position: relative;
-  margin: 16px 0;
+  margin: 72px 0 16px;
   padding: 16px;
   border-radius: 8px;
 `;
@@ -61,9 +61,27 @@ const BudgetList = styled(FlatList)`
   margin-bottom: 16px;
 `;
 
+const FloatingButtonHolder = styled(TouchableOpacity)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  background-color: magenta;
+  z-index: 5;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+`;
+
 export default function FinanceBudgetScreen() {
   return (
     <RootView>
+      <FloatingButtonHolder onPress={() => null}>
+        <Icon name="md-add" color="#FFF" size={32} />
+      </FloatingButtonHolder>
       <BudgetCard colors={['#2234ce', '#00d28a']} start={[0, 0.5]} end={[1, 0.5]}>
         <BudgetCardGrid>
           <MonthPickerToggle>
