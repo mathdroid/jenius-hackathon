@@ -111,5 +111,12 @@ const Home = ({ navigation }) => {
     </RootView>
   );
 };
-
+Home.navigationOptions = {
+  headerStyle: {
+    backgroundColor: 'rgb(0, 164, 222)',
+    shadowColor: 'transparent',
+    borderBottomWidth: 0,
+  },
+  headerTintColor: '#ddd',
+};
 export default Home;
