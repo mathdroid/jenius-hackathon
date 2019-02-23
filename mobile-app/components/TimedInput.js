@@ -13,6 +13,7 @@ export default class TimedInput extends React.Component {
     this.state = {
       selected: undefined,
       duration: this.props.duration,
+      isEnabled: false,
     };
   }
 
@@ -27,18 +28,20 @@ export default class TimedInput extends React.Component {
   }
 
   handlePress(key) {
-    if (this.state.duration !== 0) {
-      this.setState({ selected: key });
+    if (this.state.isEnabled && this.state.duration !== 0) {
+      this.setState({ selected: key, isEnabled: false });
       clearInterval(this.interval);
       this.props.pressHandler(key);
     }
   }
 
   componentDidMount() {
+    this.setState({ isEnabled: true });
     this.interval = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
+    this.setState({ isEnabled: false });
     clearInterval(this.interval);
   }
 
