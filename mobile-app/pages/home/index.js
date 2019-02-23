@@ -86,13 +86,19 @@ const Home = ({ navigation }) => {
             icon: cards,
             label: 'Spending Tracker',
             cta: 'Ulas Pengeluaranmu',
-            onCta: navigateTo('Bandersnatch'),
+            onCta: () => {
+              navigation.navigate('Finance');
+              navigation.navigate('Reports');
+            },
           },
           {
             icon: safe,
             label: 'Budget Planner',
             cta: 'Rencanakan Keuanganmu',
-            onCta: navigateTo('Bandersnatch'),
+            onCta: () => {
+              navigation.navigate('Finance');
+              navigation.navigate('Budget');
+            },
           },
           {
             icon: money,
