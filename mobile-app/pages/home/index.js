@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, ScrollView, Image, View } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
-import TextInput from './text-input';
 import cards from './cards.png';
 import safe from './safe.png';
 import money from './money.png';
@@ -79,8 +78,6 @@ const Home = ({ navigation }) => {
       <ImageWrapper aspectRatio={1.33}>
         <StyledImage source={cardCenter} />
       </ImageWrapper>
-
-      <TextInput pressHandler={navigateTo('Bandersnatch')} />
 
       <Pane
         title="KYCK"
