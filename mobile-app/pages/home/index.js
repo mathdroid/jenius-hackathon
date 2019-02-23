@@ -56,7 +56,7 @@ export default class Home extends React.Component {
         }}
         contentContainerStyle={containerStyle.default}
       >
-        <HiBanner name={'Budi'} />
+        <HiBanner name={'Resi'} />
         <View
           style={{
             aspectRatio: 1.8,
