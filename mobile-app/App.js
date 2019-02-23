@@ -1,20 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import styled from 'styled-components/native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <RootView>
-        <Text>Open up App.js to start working on your app!</Text>
-      </RootView>
-    );
-  }
-}
+import HomeScreen from './pages/home';
+import BandersnatchScreen from './pages/bandersnatch';
 
-const RootView = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Bandersnatch: {
+      screen: BandersnatchScreen,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  },
+);
+
+export default createAppContainer(AppNavigator);
