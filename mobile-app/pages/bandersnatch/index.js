@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Animated, Easing, View } from 'react-native';
 
-import { RootView, Button, InterText, TextContainer } from './components';
+import { RootView, Button, InterText, TextContainer, CountdownBar } from './components';
 import Animation from './components/animation';
 import FontLoader from './components/font-loader';
 
@@ -9,28 +9,67 @@ import lottieRocket from './lottie-rocket.json';
 import questions from './questions.json';
 
 class QuestionContainer extends Component {
-  state = {
+  initialState = {
     showAnswers: false,
+    countdownStart: null,
+    remainingTime: 5000,
+  };
+
+  animationFrame = null;
+
+  state = this.initialState;
+
+  componentWillUnmount() {
+    this.clearStep();
+  }
+
+  startStep = () => {
+    this.animationFrame = requestAnimationFrame(this.step);
+  };
+
+  clearStep = () => {
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
+    }
   };
 
   showAnswers = () => {
-    this.setState({ showAnswers: true });
+    this.setState({ showAnswers: true }, this.startStep);
+  };
+
+  step = timestamp => {
+    const { duration = 5000 } = this.props;
+    const { countdownStart } = this.state;
+    if (!countdownStart) {
+      this.setState({ countdownStart: timestamp }, this.startStep);
+    } else {
+      const remainingTime = countdownStart - timestamp + duration;
+      if (remainingTime >= 0) {
+        this.setState(() => ({ remainingTime }), this.startStep);
+      } else {
+        this.setState({ remainingTime: 0 }, () => {
+          this.randomizeChoice();
+          this.clearStep();
+        });
+      }
+    }
   };
 
   randomizeChoice = () => {
     const { question } = this.props;
-    this.chooseAnswer(question.A[Math.floor(Math.random() * question.A.length)]);
+    this.chooseAnswer(question.A[Math.floor(Math.random() * question.A.length)])();
   };
 
   chooseAnswer = q => () => {
     const { changeQuestion } = this.props;
-    this.setState({ showAnswers: false });
+    this.setState(this.initialState, this.clearStep);
     changeQuestion(q);
   };
 
   render() {
-    const { question, finish } = this.props;
-    const { showAnswers } = this.state;
+    const { question, finish, duration = 5000 } = this.props;
+    const { showAnswers, remainingTime } = this.state;
     return (
       <>
         <TextContainer>
@@ -38,17 +77,20 @@ class QuestionContainer extends Component {
         </TextContainer>
         <View>
           {showAnswers ? (
-            question.A.map((q, i) => (
-              <Button
-                key={q.label}
-                title={q.label}
-                color={`hsl(${120 + (i - 0.5) * 60}, 83%, 60%)`}
-                onPress={this.chooseAnswer(q)}
-              />
-            ))
+            <>
+              <CountdownBar progress={(100 * remainingTime) / duration} />
+              {question.A.map((q, i) => (
+                <Button
+                  key={q.label}
+                  title={q.label}
+                  colorTo={`hsl(${120 + (i - 0.5) * 180}, 83%, 60%)`}
+                  onPress={this.chooseAnswer(q)}
+                />
+              ))}
+            </>
           ) : (
             <Button
-              title={question.isFinished ? 'Lihat hasil' : 'Pilih jawaban'}
+              title={question.isFinished ? 'Lihat hasil' : 'Lihat pilihan'}
               onPress={question.isFinished ? finish : this.showAnswers}
             />
           )}
