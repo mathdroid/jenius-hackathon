@@ -1,22 +1,11 @@
-import React from 'react';
-import { Text, TextInput, View } from 'react-native';
-import styled from 'styled-components/native';
-import TimedInput from './components/TimedInput';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <RootView>
-        <Text>test</Text>
-        <TimedInput />
-      </RootView>
-    );
-  }
-}
+import HomeScreen from './pages/home';
 
-const RootView = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+});
+
+export default createAppContainer(AppNavigator);
