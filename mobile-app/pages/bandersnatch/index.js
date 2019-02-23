@@ -83,7 +83,7 @@ class QuestionContainer extends Component {
                 <Button
                   key={q.label}
                   title={q.label}
-                  color={`hsl(${120 + (i - 0.5) * 60}, 83%, 60%)`}
+                  colorTo={`hsl(${120 + (i - 0.5) * 180}, 83%, 60%)`}
                   onPress={this.chooseAnswer(q)}
                 />
               ))}
