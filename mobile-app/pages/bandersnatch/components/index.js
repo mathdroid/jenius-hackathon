@@ -37,3 +37,11 @@ export const Button = ({ onPress = () => null, title = 'Button', color, ...props
 export const TextContainer = styled(View)`
   padding: 16px;
 `;
+
+export const CountdownBar = styled(View)`
+  align-self: center;
+  width: ${props => props.progress || 0}%;
+  height: 4px;
+  background: hsl(0, ${props => (props.progress ? 100 - props.progress : 0)}%, 50%);
+  margin: 1px 0;
+`;
