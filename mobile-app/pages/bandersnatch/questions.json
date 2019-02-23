@@ -79,7 +79,21 @@
             },
             {
               "label": "Pergi ke Bali setelah membayar cicilan pinjaman dan cicilan laptop bulan depan.",
-              "score": 0.6
+              "score": 0.6,
+              "nextQ": {
+                "Q": "Yuni melakukan kunjungan kerja ke luar negeri. Namun, ditengah kunjungan, ia jatuh sakit, dan BPJS tidak dapat menanggung pengeluaran kesehatan Yuni di luar negeri. Yuni terpaksa menggelontorkan uang untuk konsultasi dokter dan membeli obat, yang apabila dirupiahkan bernilai sejumlah 1,5 juta rupiah. Yuni sebaiknya:",
+                "A": [{
+                    "label": "Menggunakan pinjaman instan seperti FlexiCash untuk membayar biaya berobat.",
+                    "score": 0.6
+                  },
+                  {
+                    "label": "Menggunakan uang saku kunjungan kerja yang diberi oleh kantor.",
+                    "score": 0.4
+                  }
+                ]
+              }
+
+
             }
           ]
         }
