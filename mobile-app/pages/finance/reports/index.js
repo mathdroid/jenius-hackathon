@@ -2,35 +2,53 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Text, View } from 'react-native';
 
-const Card = styled(View)`
-  background-color: beige;
+const RootView = styled(View)`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #000;
 `;
 
-const CardItem = styled(View)``;
+const StyledText = styled(Text)`
+  margin-bottom: ${props => (props.header ? 8 : 0)};
+  color: #fff;
+  font-size: ${props => (props.header ? 32 : 16)};
+  font-weight: ${props => (props.header ? 700 : 400)};
+`;
+
+const Card = styled(View)``;
+
+const CardItem = styled(View)`
+  margin-top: ${props => (props.header && !props.first ? 16 : 0)};
+  background-color: ${props => (props.header ? 'transparent' : '#333')};
+`;
 
 export default function FinanceReportsScreen() {
   return (
-    <View>
+    <RootView>
       <Card>
-        <CardItem header bordered>
-          <Text>Net Worth</Text>
-        </CardItem>
-        <CardItem bordered style={{ backgroundColor: 'beige' }}>
-          <Text>
-            NativeBase is a free and open source framework that enable developers to build
-            high-quality mobile apps using React Native iOS and Android apps with a fusion of ES6.
-          </Text>
-        </CardItem>
-        <CardItem header bordered>
-          <Text>Cash Flow</Text>
+        <CardItem header first bordered>
+          <StyledText header>Net Worth</StyledText>
         </CardItem>
         <CardItem bordered>
-          <Text>
+          <StyledText>
             NativeBase is a free and open source framework that enable developers to build
             high-quality mobile apps using React Native iOS and Android apps with a fusion of ES6.
-          </Text>
+          </StyledText>
         </CardItem>
       </Card>
-    </View>
+      <Card>
+        <CardItem header bordered>
+          <StyledText header>Cash Flow</StyledText>
+        </CardItem>
+        <CardItem bordered>
+          <StyledText>
+            NativeBase is a free and open source framework that enable developers to build
+            high-quality mobile apps using React Native iOS and Android apps with a fusion of ES6.
+          </StyledText>
+        </CardItem>
+      </Card>
+    </RootView>
   );
 }
