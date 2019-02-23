@@ -1,13 +1,13 @@
 /* eslint-disable global-require */
 import React from 'react';
 import styled from 'styled-components/native';
-import { Text, View } from 'react-native';
+import { Text, ScrollView, View, Dimensions } from 'react-native';
+import { LineChart, Grid, YAxis } from 'react-native-svg-charts';
+import * as shape from 'd3-shape';
 import FontLoader from '../../bandersnatch/components/font-loader';
 
-const RootView = styled(View)`
-  display: flex;
+const RootView = styled(ScrollView)`
   flex: 1;
-  flex-direction: column;
   padding: 16px;
   background-color: #000;
 `;
@@ -22,8 +22,10 @@ const StyledText = styled(Text)`
 const Card = styled(View)``;
 
 const CardItem = styled(View)`
+  display: flex;
   margin-top: ${props => (props.header && !props.first ? 16 : 0)};
   background-color: ${props => (props.header ? 'transparent' : '#333')};
+  height: 100px;
 `;
 
 export default function FinanceReportsScreen() {
@@ -41,10 +43,14 @@ export default function FinanceReportsScreen() {
             <StyledText header>Net Worth</StyledText>
           </CardItem>
           <CardItem bordered>
-            <StyledText>
-              NativeBase is a free and open source framework that enable developers to build
-              high-quality mobile apps using React Native iOS and Android apps with a fusion of ES6.
-            </StyledText>
+            <LineChart
+              style={{ flex: 1 }}
+              svg={{ stroke: 'rgb(134, 65, 244)' }}
+              contentInset={{ top: 20, bottom: 20 }}
+              data={[2000400, 3151400, 2600000, 2300000, 2000000]}
+            >
+              <Grid />
+            </LineChart>
           </CardItem>
         </Card>
         <Card>
