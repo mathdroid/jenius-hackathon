@@ -3,9 +3,14 @@ import { Text, ScrollView, Image, View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 import TextInput from './text-input';
-import w1 from './w1.png';
-import w2 from './w2.png';
-import w3 from './w3.png';
+import cards from './cards.png';
+import safe from './safe.png';
+import money from './money.png';
+import Pane from './pane';
+import inOut from './in-out.png';
+import cardCenter from './card-center.png';
+import eWallet from './e-wallet.png';
+import totalBalance from './total-balance.png';
 
 // const RootView = styled(ScrollView)`
 // `;
@@ -54,14 +59,14 @@ export default class Home extends React.Component {
         <HiBanner name={'Budi'} />
         <View
           style={{
-            aspectRatio: 2.09,
+            aspectRatio: 1.8,
             width: '100%',
             alignSelf: 'stretch',
             marginVertical: 5,
           }}
         >
           <Image
-            source={w1}
+            source={totalBalance}
             style={{
               flex: 1,
               width: null,
@@ -72,14 +77,14 @@ export default class Home extends React.Component {
         </View>
         <View
           style={{
-            aspectRatio: 1.98,
+            aspectRatio: 1.8,
             width: '100%',
             alignSelf: 'stretch',
             marginVertical: 5,
           }}
         >
           <Image
-            source={w2}
+            source={inOut}
             style={{
               flex: 1,
               width: null,
@@ -91,14 +96,33 @@ export default class Home extends React.Component {
 
         <View
           style={{
-            aspectRatio: 1.92,
+            aspectRatio: 1.36,
             width: '100%',
             alignSelf: 'stretch',
             marginVertical: 5,
           }}
         >
           <Image
-            source={w3}
+            source={eWallet}
+            style={{
+              flex: 1,
+              width: null,
+              height: null,
+              resizeMode: 'contain',
+            }}
+          />
+        </View>
+
+        <View
+          style={{
+            aspectRatio: 1.33,
+            width: '100%',
+            alignSelf: 'stretch',
+            marginVertical: 5,
+          }}
+        >
+          <Image
+            source={cardCenter}
             style={{
               flex: 1,
               width: null,
@@ -109,6 +133,19 @@ export default class Home extends React.Component {
         </View>
 
         <TextInput pressHandler={navigateTo('Bandersnatch')} />
+        <Pane
+          title={'KYCK'}
+          menu={[
+            { icon: cards, label: 'Spending Tracker', cta: 'Ulas Pengeluaranmu' },
+            { icon: safe, label: 'Budget Planner', cta: 'Rencanakan Keuanganmu' },
+            {
+              icon: money,
+              label: 'Flexi Cash',
+              cta: 'Mulai Flexi Quiz',
+              onCta: navigateTo('Bandersnatch'),
+            },
+          ]}
+        />
       </ScrollView>
     );
   }
