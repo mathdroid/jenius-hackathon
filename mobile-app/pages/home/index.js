@@ -11,13 +11,25 @@ const RootView = styled(View)`
   justify-content: center;
 `;
 
+const Banner = styled(View)`
+  background-color: rgb(0, 164, 222);
+`;
+const BannerText = styled(Text)`
+  color: #fff;
+`;
+const HiBanner = name => (
+  <Banner>
+    <BannerText>{name}</BannerText>
+  </Banner>
+);
+
 export default class Home extends React.Component {
   render() {
     const { navigation } = this.props;
     const navigateTo = to => () => navigation.navigate(to);
     return (
       <RootView>
-        <Text>Open up App.js to start working on your app!</Text>
+        <HiBanner name={'Budi'} />
         <TextInput pressHandler={navigateTo('Bandersnatch')} />
       </RootView>
     );
