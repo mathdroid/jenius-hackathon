@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export default class TimedInput extends React.Component {
   static defaultProps = {
-    duration: 10,
+    duration: 3,
   };
 
   constructor(props) {
@@ -18,22 +18,21 @@ export default class TimedInput extends React.Component {
   }
 
   tick() {
+    const { answers } = this.props;
+
     this.setState(state => ({
       duration: state.duration - 1,
     }));
 
     if (this.state.duration === 0) {
-      this.setState({ isEnabled: false });
-      clearInterval(this.interval);
+      this.handlePress(answers[Math.floor(Math.random() * answers.length)]);
     }
   }
 
   handlePress(key) {
-    if (this.state.isEnabled && this.state.duration !== 0) {
-      this.setState({ selected: key, isEnabled: false });
-      clearInterval(this.interval);
-      this.props.pressHandler(key);
-    }
+    this.setState({ selected: key, isEnabled: false });
+    clearInterval(this.interval);
+    this.props.pressHandler(key);
   }
 
   componentDidMount() {
