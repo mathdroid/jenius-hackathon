@@ -51,4 +51,12 @@ const TabNavigator = createMaterialTopTabNavigator(
   },
 );
 
+TabNavigator.navigationOptions = {
+  headerStyle: {
+    backgroundColor: '#000',
+    shadowColor: 'transparent',
+    borderBottomWidth: 0,
+  },
+  headerTintColor: '#ddd',
+};
 export default TabNavigator;
