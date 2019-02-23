@@ -16,33 +16,67 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
+      duration: 10,
       currentQuestion: undefined,
       prevAnswer: undefined,
       score: 0,
+      isActive: false,
     };
   }
 
+  tick() {
+    const { currentQuestion } = this.state;
+
+    this.setState(state => ({
+      duration: state.duration - 1,
+    }));
+
+    if (this.state.duration === 0) {
+      this.handlePress(currentQuestion.A[Math.floor(Math.random() * currentQuestion.A.length)]);
+    }
+  }
+
   componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
     this.setState({
       currentQuestion: questions.question,
+      isActive: true,
     });
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  handleAnswer = key => {
+    if (this.state.duration !== 0) {
+      this.setState(prevState => ({
+        duration: 10,
+        prevAnswer: key.label,
+        score: prevState.score + key.score,
+        currentQuestion: key.nextQ ? key.nextQ : undefined,
+      }));
+    }
+
+    if (!key.nextQ) {
+      this.setState({
+        isActive: false,
+        duration: 0,
+      });
+    }
+  };
+
   render() {
-    const { currentQuestion, prevAnswer, score } = this.state;
+    const { duration, currentQuestion, prevAnswer, score, isActive } = this.state;
     return (
       <RootView>
+        {currentQuestion && <Text>{duration}</Text>}
         {currentQuestion && (
           <TimedInput
             question={currentQuestion.Q}
             answers={currentQuestion.A}
-            pressHandler={key => {
-              this.setState(prevState => ({
-                prevAnswer: key.label,
-                score: prevState.score + key.score,
-                currentQuestion: key.nextQ ? key.nextQ : undefined,
-              }));
-            }}
+            pressHandler={this.handleAnswer}
+            isEnabled={isActive}
           />
         )}
         <Text>Score: {score}</Text>

@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 export default class TimedInput extends React.Component {
   static defaultProps = {
     duration: 10,
+    isEnabled: false,
   };
 
   constructor(props) {
@@ -13,7 +14,6 @@ export default class TimedInput extends React.Component {
     this.state = {
       selected: undefined,
       duration: this.props.duration,
-      isEnabled: false,
     };
   }
 
@@ -30,19 +30,10 @@ export default class TimedInput extends React.Component {
   }
 
   handlePress(data) {
-    this.setState({ selected: data, isEnabled: false });
-    clearInterval(this.interval);
-    this.props.pressHandler(data);
-  }
-
-  componentDidMount() {
-    this.setState({ isEnabled: true });
-    this.interval = setInterval(() => this.tick(), 1000);
-  }
-
-  componentWillUnmount() {
-    this.setState({ isEnabled: false });
-    clearInterval(this.interval);
+    if (this.props.isEnabled) {
+      this.setState({ selected: data });
+      this.props.pressHandler(data);
+    }
   }
 
   render() {
@@ -51,9 +42,7 @@ export default class TimedInput extends React.Component {
 
     return (
       <>
-        <QuestionText>
-          {question} {duration}
-        </QuestionText>
+        <QuestionText>{question}</QuestionText>
         {answers.map((data, key) => {
           return (
             <View key={key}>
