@@ -51,10 +51,10 @@ export default class TimedInput extends React.Component {
         <QuestionText>
           {question} {duration}
         </QuestionText>
-        {answers.map((data, key) => {
+        {answers.map(data => {
           return (
             <View key={data}>
-              {selected === key ? (
+              {selected === data ? (
                 <Checkbox>
                   <Text>isChecked {data}</Text>
                 </Checkbox>
