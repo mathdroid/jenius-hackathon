@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import styled from 'styled-components/native';
+import TimedInput from './components/TimedInput';
 
 export default class App extends React.Component {
   render() {
     return (
       <RootView>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>test</Text>
+        <TimedInput />
       </RootView>
     );
   }
@@ -17,4 +19,4 @@ const RootView = styled(View)`
   background-color: #fff;
   align-items: center;
   justify-content: center;
-`
+`;
