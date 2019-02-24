@@ -1,9 +1,8 @@
 /* eslint-disable global-require */
 import React from 'react';
-import styled, { css } from 'styled-components/native';
-import { Text, ScrollView, View, Dimensions } from 'react-native';
+import styled from 'styled-components/native';
+import { Text, ScrollView, View } from 'react-native';
 import { BarChart, LineChart, Grid, YAxis } from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
 import FontLoader from '../../bandersnatch/components/font-loader';
 
 const RootView = styled(ScrollView)`
@@ -24,6 +23,7 @@ const Card = styled(View)``;
 const CardItem = styled(View)`
   margin-top: ${props => (props.header && !props.first ? 16 : 0)};
   background-color: ${props => (props.header ? 'transparent' : '#333')};
+  border-radius: ${props => (props.header ? 0 : '6px')};
 `;
 
 const initialSalary = 9000;
@@ -42,10 +42,10 @@ export default function FinanceReportsScreen() {
     >
       <RootView>
         <Card>
-          <CardItem header first bordered>
+          <CardItem header first>
             <StyledText header>Net Worth</StyledText>
           </CardItem>
-          <CardItem bordered>
+          <CardItem>
             <View style={{ height: 200, flexDirection: 'row' }}>
               <YAxis
                 data={[2000400, 3151400, 2600000, 2300000, 2000000]}
@@ -69,10 +69,10 @@ export default function FinanceReportsScreen() {
           </CardItem>
         </Card>
         <Card>
-          <CardItem header bordered>
+          <CardItem header>
             <StyledText header>Cash Flow</StyledText>
           </CardItem>
-          <CardItem bordered>
+          <CardItem>
             <View style={{ height: 200, flexDirection: 'row' }}>
               <YAxis
                 data={burnRateChart}

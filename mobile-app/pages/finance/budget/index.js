@@ -123,7 +123,7 @@ export default class FinanceBudgetScreen extends React.Component {
               <MonthPickerToggle>
                 <Icon name="md-more" color="#FFF" size={32} />
               </MonthPickerToggle>
-              <BudgetCardMonthText bold>Maret 2019</BudgetCardMonthText>
+              <BudgetCardMonthText bold>Februari 2019</BudgetCardMonthText>
               <StyledText>Untuk Dianggarkan</StyledText>
               <BudgetCardPrimaryText bold larger>
                 9,000,000

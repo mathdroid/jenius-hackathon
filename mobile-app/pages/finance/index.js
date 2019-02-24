@@ -1,21 +1,27 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Logo from '../../assets/splash.png';
 import FinanceBudgetScreen from './budget';
 import FinanceReportsScreen from './reports';
 
-class LogoTitle extends React.Component {
-  render() {
-    return (
-      <Image
-        source={require('../../assets/splash.png')}
-        style={{ height: 64, resizeMode: 'contain' }}
-      />
-    );
-  }
-}
+const ImageWrapper = styled(View)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: stretch;
+  width: 100%;
+  aspect-ratio: ${props => props.aspectRatio || 1};
+`;
+
+const StyledImage = styled(Image)`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  resize-mode: contain;
+`;
 
 const TabNavigator = createMaterialTopTabNavigator(
   {
@@ -70,6 +76,10 @@ TabNavigator.navigationOptions = {
     borderBottomWidth: 0,
   },
   headerTintColor: '#ddd',
-  headerTitle: <LogoTitle />,
+  headerRight: (
+    <ImageWrapper aspectRatio={1.88}>
+      <StyledImage source={Logo} />
+    </ImageWrapper>
+  ),
 };
 export default TabNavigator;

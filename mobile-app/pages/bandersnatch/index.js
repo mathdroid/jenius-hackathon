@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
+import styled from 'styled-components/native';
 import { Animated, Easing, View, AsyncStorage, Image } from 'react-native';
 
 import { RootView, Button, InterText, TextContainer, CountdownBar } from './components';
 import Animation from './components/animation';
 import FontLoader from './components/font-loader';
 
+import Logo from '../../assets/splash.png';
 import lottieRocket from './lottie-rocket.json';
 import lottieFinished from './lottie-finished.json';
 import lottieSuccess from './lottie-success.json';
 import questions from './questions.json';
 
+const ImageWrapper = styled(View)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: stretch;
+  width: 100%;
+  aspect-ratio: ${props => props.aspectRatio || 1};
+`;
+
+const StyledImage = styled(Image)`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  resize-mode: contain;
+`;
+
 class LogoTitle extends React.Component {
   render() {
     return (
-      <Image
-        source={require('../../assets/splash.png')}
-        style={{ height: 64, resizeMode: 'contain' }}
-      />
+      <ImageWrapper aspectRatio={1.88}>
+        <StyledImage source={Logo} />
+      </ImageWrapper>
     );
   }
 }
@@ -145,7 +161,7 @@ class BandersnatchPage extends Component {
       borderBottomWidth: 0,
     },
     headerTintColor: '#fff',
-    headerTitle: <LogoTitle />,
+    headerRight: <LogoTitle />,
   };
 
   state = {

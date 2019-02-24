@@ -10,6 +10,7 @@ import inOut from './in-out.png';
 import cardCenter from './card-center.png';
 import eWallet from './e-wallet.png';
 import totalBalance from './total-balance.png';
+import Logo from '../../assets/splash.png';
 
 class LogoTitle extends React.Component {
   render() {
@@ -129,6 +130,10 @@ Home.navigationOptions = {
     borderBottomWidth: 0,
   },
   headerTintColor: '#000',
-  headerTitle: <LogoTitle />,
+  headerRight: (
+    <ImageWrapper aspectRatio={1.88}>
+      <StyledImage source={Logo} />
+    </ImageWrapper>
+  ),
 };
 export default Home;
