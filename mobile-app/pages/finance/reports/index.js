@@ -1,8 +1,8 @@
 /* eslint-disable global-require */
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Text, ScrollView, View, Dimensions } from 'react-native';
-import { LineChart, Grid, YAxis } from 'react-native-svg-charts';
+import { BarChart, LineChart, Grid, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import FontLoader from '../../bandersnatch/components/font-loader';
 
@@ -22,11 +22,14 @@ const StyledText = styled(Text)`
 const Card = styled(View)``;
 
 const CardItem = styled(View)`
-  display: flex;
   margin-top: ${props => (props.header && !props.first ? 16 : 0)};
   background-color: ${props => (props.header ? 'transparent' : '#333')};
-  height: 100px;
 `;
+
+const initialSalary = 9000;
+const burnRate = 350;
+const burnRateChart = new Array(30).fill(9000).map((_, i) => initialSalary - i * 350);
+const burnRateInDays = initialSalary / burnRate;
 
 export default function FinanceReportsScreen() {
   return (
@@ -43,14 +46,26 @@ export default function FinanceReportsScreen() {
             <StyledText header>Net Worth</StyledText>
           </CardItem>
           <CardItem bordered>
-            <LineChart
-              style={{ flex: 1 }}
-              svg={{ stroke: 'rgb(134, 65, 244)' }}
-              contentInset={{ top: 20, bottom: 20 }}
-              data={[2000400, 3151400, 2600000, 2300000, 2000000]}
-            >
-              <Grid />
-            </LineChart>
+            <View style={{ height: 200, flexDirection: 'row' }}>
+              <YAxis
+                data={[2000400, 3151400, 2600000, 2300000, 2000000]}
+                contentInset={{ top: 20, bottom: 20 }}
+                svg={{
+                  fill: 'grey',
+                  fontSize: 10,
+                }}
+                numberOfTicks={10}
+                formatLabel={value => `Rp${value}`}
+              />
+              <LineChart
+                style={{ flex: 1, marginLeft: 8 }}
+                svg={{ stroke: 'magenta' }}
+                contentInset={{ top: 20, bottom: 20, left: 20 }}
+                data={[2000400, 3151400, 2600000, 2300000, 2000000]}
+              >
+                <Grid />
+              </LineChart>
+            </View>
           </CardItem>
         </Card>
         <Card>
@@ -58,10 +73,52 @@ export default function FinanceReportsScreen() {
             <StyledText header>Cash Flow</StyledText>
           </CardItem>
           <CardItem bordered>
-            <StyledText>
-              NativeBase is a free and open source framework that enable developers to build
-              high-quality mobile apps using React Native iOS and Android apps with a fusion of ES6.
-            </StyledText>
+            <View style={{ height: 200, flexDirection: 'row' }}>
+              <YAxis
+                data={burnRateChart}
+                contentInset={{ top: 20, bottom: 20 }}
+                svg={{
+                  fill: 'grey',
+                  fontSize: 10,
+                }}
+                numberOfTicks={10}
+                formatLabel={value => `Rp${value}`}
+              />
+              <BarChart
+                style={{ flex: 1, marginLeft: 8 }}
+                svg={{ fill: 'magenta' }}
+                contentInset={{ top: 20, bottom: 20 }}
+                data={burnRateChart}
+              >
+                <Grid />
+              </BarChart>
+            </View>
+            <View
+              style={{
+                marginVertical: 8,
+              }}
+            >
+              <StyledText
+                style={{
+                  textAlign: 'center',
+                  fontFamily: 'inter-regular',
+                  color: '#fff',
+                }}
+              >
+                Burn Rate:
+              </StyledText>
+              <Text
+                bold
+                style={{
+                  textAlign: 'center',
+                  fontFamily: 'inter-bold',
+                  fontSize: 24,
+                  color: 'magenta',
+                }}
+              >
+                {Math.ceil(burnRateInDays)} days
+              </Text>
+            </View>
           </CardItem>
         </Card>
       </RootView>
